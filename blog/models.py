@@ -11,6 +11,9 @@ class Category(models.Model):
     def __str__(self):
         return self.title
 
+    def get_absolute_url(self):
+        return '/%s/' % self.slug
+
 class Post(models.Model):
     ACTIVE = 'active'
     DRAFT = 'draft'
@@ -34,6 +37,9 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return '/%s/%s/' % (self.category.slug, self.slug)
 
 
 class Comment(models.Model):
